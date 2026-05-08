@@ -5,10 +5,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.proyecto.coworking.Modelos.DTOs.SectorCompletoDTO;
-import com.proyecto.coworking.Modelos.DTOs.SectorDTO;
-import com.proyecto.coworking.Modelos.Entidades.Sala;
 import com.proyecto.coworking.Modelos.Entidades.Sector;
 import com.proyecto.coworking.Repositorios.SectorRepository;
 
@@ -21,15 +17,16 @@ public class SectorService {
         this.sectorRepository = sectorRepository;
     }
 
+
     @Transactional(readOnly = true)
     public String obtenerUbicacionCompleta(Long idSector){
-        List<String> sectoresSala = new ArrayList<>();
+        List<String> ubicacionCompleta = new ArrayList<>();
         Sector padre = sectorRepository.findById(idSector).get();
         while (padre != null) {
-            sectoresSala.add(padre.getNombre());
+            ubicacionCompleta.add(padre.getNombre());
             padre = padre.getSectorPadre();
         }
-        return String.join(" > ", sectoresSala);
+        return String.join(" > ", ubicacionCompleta);
     }
 
 }
