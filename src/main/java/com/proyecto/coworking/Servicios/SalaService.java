@@ -52,5 +52,18 @@ public class SalaService {
             .collect(Collectors.toList());
     }
 
+    
+    public List<SalaDTO> obtenerSalasPorSector(Long idSector){
+        List<SalaDTO> salasTotales = new ArrayList<>();
+        List<Sala> salas = salaRepository.findBySectorId(idSector);
+        List<Sector> subsectores = sectorRepository.findBySectorPadreId(idSector);
+        for (Sector sub : subsectores) {
+            salasTotales.addAll(this.obtenerSalasPorSector(sub.getId()));
+        }
+        for (Sala sala : salas) {
+            salasTotales.add(this.entidadADTO(sala));
+        }
+        return salasTotales;
+    }
 
 }
