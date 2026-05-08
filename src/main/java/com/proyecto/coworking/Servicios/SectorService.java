@@ -7,7 +7,7 @@ import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.proyecto.coworking.Modelos.DTOs.SectorSelectorDTO;
+import com.proyecto.coworking.Modelos.DTOs.SelectorDTO;
 import com.proyecto.coworking.Modelos.Entidades.Sector;
 import com.proyecto.coworking.Repositorios.SectorRepository;
 
@@ -32,9 +32,9 @@ public class SectorService {
         return String.join(" > ", ubicacionCompleta);
     }
 
-    public List<SectorSelectorDTO> listarSectoresParaFiltro() {
+    public List<SelectorDTO> listarSectoresParaFiltro() {
     return sectorRepository.findAll().stream()
-        .map(s -> new SectorSelectorDTO(s.getId(), s.getNombre()))
+        .map(s -> new SelectorDTO(s.getId(), s.getNombre()))
         .collect(Collectors.toList());
     }
 

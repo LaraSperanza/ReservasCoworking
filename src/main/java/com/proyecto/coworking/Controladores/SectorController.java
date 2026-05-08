@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.proyecto.coworking.Modelos.DTOs.SectorSelectorDTO;
+import com.proyecto.coworking.Modelos.DTOs.SelectorDTO;
 import com.proyecto.coworking.Servicios.SectorService;
 
 @RestController
 @RequestMapping("/api/sectores")
-// @CrossOrigin(origins = "*") usar si tira error con el frontend
+@CrossOrigin(origins = "*")
 public class SectorController {
     private final SectorService sectorService;
 
@@ -22,8 +22,8 @@ public class SectorController {
     }
 
     @GetMapping("/selector")
-    public ResponseEntity<List<SectorSelectorDTO>> obtenerSectoresParaFiltro() {
-        List<SectorSelectorDTO> sectores = sectorService.listarSectoresParaFiltro();
+    public ResponseEntity<List<SelectorDTO>> obtenerSectoresParaFiltro() {
+        List<SelectorDTO> sectores = sectorService.listarSectoresParaFiltro();
         if (sectores.isEmpty()) {
             return ResponseEntity.noContent().build(); // Devuelve 204 si no hay datos
         }
