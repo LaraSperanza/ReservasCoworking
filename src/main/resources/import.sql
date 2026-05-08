@@ -15,4 +15,9 @@ INSERT INTO Sectores (nombre, padre_id) VALUES ('Ala Norte', 3);
 INSERT INTO Sectores (nombre, padre_id) VALUES ('Ala Sur', 3);
 -- Salas (Asociadas al Piso 1)
 INSERT INTO Salas (nombre, capacidad, precio_hora, sector_id) VALUES ('Sala de Reuniones A', 4, 1500.00, 4);
+INSERT INTO Salas (nombre, capacidad, precio_hora, sector_id) VALUES ('Sala de Reuniones B', 6, 2000.00, 4);
 INSERT INTO Salas (nombre, capacidad, precio_hora, sector_id) VALUES ('Auditorio Principal', 50, 5000.00, 5);
+-- Salas (Asociadas al Piso 2)
+INSERT INTO Salas (nombre, capacidad, precio_hora, sector_id) VALUES ('Sala de Capacitación', 20, 3000.00, 7);
+INSERT INTO Salas (nombre, capacidad, precio_hora, sector_id) VALUES ('Sala de Reuniones C', 8, 1800.00, 7);
+
