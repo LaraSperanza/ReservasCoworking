@@ -42,4 +42,10 @@ public class SalaController {
         return ResponseEntity.ok(salas); // Devuelve 200 OK con el JSON
     }
 
+    @GetMapping("/por-sector/{id}")
+    public ResponseEntity<List<SalaDTO>> obtenerSalasPorSector(@PathVariable("id") Long idSector) {
+        List<SalaDTO> salas = salaService.obtenerSalasPorSector(idSector);
+        return ResponseEntity.ok(salas); // Devuelve 200 OK con el JSON aunque la lista esté vacía.
+    }
+
 }
