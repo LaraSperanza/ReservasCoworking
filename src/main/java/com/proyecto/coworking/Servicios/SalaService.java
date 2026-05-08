@@ -27,5 +27,17 @@ public class SalaService {
         this.sectorService = sectorService;
     }
 
+    public String obtenerUbicacionCompleta(Long idSala){
+        return sectorService.obtenerUbicacionCompleta(salaRepository.findById(idSala).get().getSector().getId());
+    }
+
+    public SalaDTO entidadADTO(Sala sala) {
+        return new SalaDTO(
+                sala.getNombre(),
+                sala.getCapacidad(),
+                sala.getPrecioHora(),
+                this.obtenerUbicacionCompleta(sala.getId())
+        );
+    }
 
 }
