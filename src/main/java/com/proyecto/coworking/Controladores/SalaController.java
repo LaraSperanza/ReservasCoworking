@@ -33,4 +33,13 @@ public class SalaController {
         return ResponseEntity.ok(salas); // Devuelve 200 OK con el JSON
     }
 
+    @GetMapping("/listar-salas")
+    public ResponseEntity<List<SalaDTO>> obtenerTodasLasSalas() {
+        List<SalaDTO> salas = salaService.listarTodas();
+        if (salas.isEmpty()) {
+            return ResponseEntity.noContent().build(); // Devuelve 204 si no hay datos
+        }
+        return ResponseEntity.ok(salas); // Devuelve 200 OK con el JSON
+    }
+
 }
