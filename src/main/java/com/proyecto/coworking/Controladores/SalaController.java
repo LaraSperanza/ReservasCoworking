@@ -24,4 +24,13 @@ public class SalaController {
         this.salaService = salaService;
     }
 
+    @GetMapping("/selector")
+    public ResponseEntity<List<SelectorDTO>> obtenerSalasParaFiltro() {
+        List<SelectorDTO> salas = salaService.listarSalasParaFiltro();
+        if (salas.isEmpty()) {
+            return ResponseEntity.noContent().build(); // Devuelve 204 si no hay datos
+        }
+        return ResponseEntity.ok(salas); // Devuelve 200 OK con el JSON
+    }
+
 }
