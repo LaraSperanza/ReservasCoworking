@@ -2,9 +2,12 @@ package com.proyecto.coworking.Servicios;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+
+import com.proyecto.coworking.Modelos.DTOs.SectorSelectorDTO;
 import com.proyecto.coworking.Modelos.Entidades.Sector;
 import com.proyecto.coworking.Repositorios.SectorRepository;
 
@@ -27,6 +30,12 @@ public class SectorService {
             padre = padre.getSectorPadre();
         }
         return String.join(" > ", ubicacionCompleta);
+    }
+
+    public List<SectorSelectorDTO> listarSectoresParaFiltro() {
+    return sectorRepository.findAll().stream()
+        .map(s -> new SectorSelectorDTO(s.getId(), s.getNombre()))
+        .collect(Collectors.toList());
     }
 
 }
