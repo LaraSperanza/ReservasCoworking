@@ -40,4 +40,17 @@ public class SalaService {
         );
     }
 
+    public List<SalaDTO> listarTodas() {
+        return salaRepository.findAll().stream()
+                .map(this::entidadADTO)
+                .collect(Collectors.toList());
+    }
+
+    public List<SelectorDTO> listarSalasParaFiltro() {
+        return salaRepository.findAll().stream()
+            .map(s -> new SelectorDTO(s.getId(), s.getNombre()))
+            .collect(Collectors.toList());
+    }
+
+
 }
