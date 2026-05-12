@@ -1,4 +1,5 @@
 package com.proyecto.coworking.Modelos.Entidades;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,8 +15,17 @@ public class Socio {
     @Column(nullable = false, length = 30)
     private String nombre;
 
-    @Column(nullable = false, length = 30)
+    @Column(nullable = false, length = 30, unique = true)
     private String email;
+
+    @Column(name = "password", nullable = false, length = 255)
+    private String password;
+
+    @Column(nullable = false)
+    private LocalDate fechaAlta;
+
+    @Column(nullable = false)
+    private boolean activo = true;
 
     @ManyToOne
     @JoinColumn(name = "membresia_id", nullable = false)
@@ -44,6 +54,30 @@ public class Socio {
 
     public String getEmail(){
         return email;
+    }
+
+    public void setPassword(String password){
+        this.password = password;
+    }
+
+    public String getPassword(){
+        return password;
+    }
+
+    public void setFechaAlta(LocalDate fechaAlta){
+        this.fechaAlta = fechaAlta;
+    }
+
+    public LocalDate getFechaAlta(){
+        return fechaAlta;
+    }
+
+    public void setActivo(boolean activo){
+        this.activo = activo;
+    }
+
+    public boolean esActivo(){
+        return activo;
     }
 
     public void setMembresia(Membresia membresia){
