@@ -17,13 +17,20 @@ CREATE TABLE Salas (
 CREATE TABLE Membresias (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(30) NOT NULL,
-    capacidad_max_sala INT NOT NULL
+    precioMensual DECIMAL(10,2) NOT NULL,
+    porcentajeDescuento DECIMAL(5,2) NOT NULL,
+    limiteHorasMensuales INT NOT NULL,
+    permiteAuditorios BOOLEAN NOT NULL,
+    FOREIGN KEY (membresia_id) REFERENCES Membresias(id)
 );
 
 CREATE TABLE Socios (
     id BIGINT AUTO_INCREMENT PRIMARY KEY,
     nombre VARCHAR(30) NOT NULL,
-    email VARCHAR(30) NOT NULL,
+    email VARCHAR(30) UNIQUE NOT NULL,
+    password VARCHAR(255) NOT NULL,
+    fecha_alta DATE NOT NULL,
+    activo BOOLEAN NOT NULL,
     membresia_id BIGINT NOT NULL, 
     FOREIGN KEY (membresia_id) REFERENCES Membresias(id)
 );
