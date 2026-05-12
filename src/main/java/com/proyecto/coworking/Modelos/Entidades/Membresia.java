@@ -1,4 +1,5 @@
 package com.proyecto.coworking.Modelos.Entidades;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,7 +16,16 @@ public class Membresia {
     private String nombre;
 
     @Column(nullable = false)
-    private Integer capacidadMaxSala;
+    private BigDecimal precioMensual;
+
+    @Column(nullable = false)
+    private BigDecimal porcentajeDescuento;
+
+    @Column(nullable = false)
+    private Integer limiteHorasMensuales;
+
+    @Column(nullable = false)
+    private Boolean permiteAuditorios;
 
     @OneToMany(mappedBy = "membresia")
     private List<Socio> socios = new ArrayList<>();
@@ -34,12 +44,36 @@ public class Membresia {
         return nombre;
     }
 
-    public void setCapacidadMaxSala(Integer capacidad){
-        this.capacidadMaxSala = capacidad;
+    public void setPrecioMensual(BigDecimal precioMensual){
+        this.precioMensual = precioMensual;
     }
 
-    public Integer getCapacidadMaxSala(){
-        return capacidadMaxSala;
+    public BigDecimal getPrecioMensual(){
+        return precioMensual;
+    }
+
+    public void setPorcentajeDescuento(BigDecimal porcentajeDescuento){
+        this.porcentajeDescuento = porcentajeDescuento;
+    }
+
+    public BigDecimal getPorcentajeDescuento(){
+        return porcentajeDescuento;
+    }
+
+    public void setLimiteHorasMensuales(Integer limiteHorasMensuales){
+        this.limiteHorasMensuales = limiteHorasMensuales;
+    }
+
+    public Integer getLimiteHorasMensuales(){
+        return limiteHorasMensuales;
+    }   
+
+    public void setPermiteAuditorios(Boolean permiteAuditorios){
+        this.permiteAuditorios = permiteAuditorios;
+    }
+
+    public Boolean getPermiteAuditorios(){
+        return permiteAuditorios;
     }
 
     public void addSocio(Socio socio){
